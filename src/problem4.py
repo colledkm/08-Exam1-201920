@@ -3,8 +3,8 @@ Exam 1, problem 4.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Katana Colledge.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -68,13 +68,41 @@ def problem4(number_of_stairs, step_size, starting_point, window):
       :type window:            rg.RoseWindow
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # IMPORTANT: For PARTIAL CREDIT, you can draw just the black "bottoms"
     #            of the stair steps.
     # -------------------------------------------------------------------------
-
-
+    starting_point.attach_to(window)
+    window.render()
+    #
+    for k in range(number_of_stairs):
+        point1x = starting_point.x + step_size*k
+        point1y = starting_point.y - step_size*k
+        point1 = rg.Point(point1x,point1y)
+        #
+        point2x = point1.x
+        point2y = point1.y - step_size
+        point2 = rg.Point(point2x,point2y)
+        #
+        line = rg.Line(point1,point2)
+        line.thickness=3
+        line.color = 'magenta'
+        line.attach_to(window)
+        window.render()
+        #
+        point3x = starting_point.x + step_size*(k+1)
+        point3y = starting_point.y - step_size*(k+1)
+        point3 = rg.Point(point3x,point3y)
+        #
+        line2 = rg.Line(point2,point3)
+        line2.thickness = 3
+        line2.color = 'black'
+        line2.attach_to(window)
+        window.render()
+    #
+    point3.attach_to(window)
+    window.render()
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
